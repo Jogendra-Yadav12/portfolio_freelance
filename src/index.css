@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0a0a0a;
+  --color-paper: #ffffff;
+  
+  --font-sora: 'Poppins', sans-serif;
+  --font-inter: 'Poppins', sans-serif;
+  --font-poppins: 'Poppins', sans-serif;
+
+  --animate-marquee: marquee 28s linear infinite;
+  --animate-floaty: floaty 4.5s ease-in-out infinite;
+  --animate-spinslow: spinslow 16s linear infinite;
+  --animate-bobx: bobx 1.6s ease-in-out infinite;
+  --animate-shimmer: shimmer 2s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes spinslow {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes bobx {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(6px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Light Theme Variables (Default) */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f3f4f6; /* neutral-100 */
+  --text-primary: #0a0a0a;
+  --text-secondary: #6b7280; /* neutral-500 */
+  --border-color: #e5e7eb; /* neutral-200 */
+  --accent-color: #0a0a0a;
+  --accent-text: #ffffff;
+}
+
+/* Dark Theme Variables */
+html.dark {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #171717; /* neutral-900 */
+  --text-primary: #ffffff;
+  --text-secondary: #a3a3a3; /* neutral-400 */
+  --border-color: #262626; /* neutral-800 */
+  --accent-color: #ffffff;
+  --accent-text: #0a0a0a;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Poppins', sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+@layer components {
+  .wrap {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 font-sora text-xs uppercase tracking-[0.2em];
+    color: var(--text-secondary);
+  }
+  .section-title {
+    @apply font-sora text-3xl font-extrabold tracking-tight sm:text-4xl;
+    color: var(--text-primary);
+  }
+  .lead {
+    color: var(--text-secondary);
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-sora font-semibold px-6 py-3 transition duration-200 hover:-translate-y-0.5;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-sora font-semibold px-6 py-3 transition duration-200 hover:-translate-y-0.5;
+    background-color: var(--accent-color);
+    color: var(--accent-text);
+  }
+  .btn-primary:hover {
+    opacity: 0.9;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-sora font-semibold px-6 py-3 transition duration-200 hover:-translate-y-0.5 border;
+    border-color: var(--border-color);
+    color: var(--text-primary);
+  }
+  .btn-outline:hover {
+    border-color: var(--text-primary);
+  }
+  .chip {
+    @apply inline-flex items-center rounded-full border px-4 py-2 text-sm font-medium;
+    border-color: var(--border-color);
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+  }
+  .card {
+    @apply rounded-2xl border p-6 transition duration-200 hover:-translate-y-1 hover:shadow-lg;
+    background-color: var(--bg-primary);
+    border-color: var(--border-color);
+  }
+  .card:hover {
+    border-color: var(--text-primary);
+  }
+  .ico-box {
+    @apply grid h-12 w-12 place-items-center rounded-xl border text-lg;
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+  }
+}
